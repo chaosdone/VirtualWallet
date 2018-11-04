@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header"/>
+<body roleId="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<head th:replace="common/header :: navbar"/>
+<div class="container main">
+    <div class="row">
+        <div class="col-lg-12">
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div>
+         	<div class="panel panel-info">
+         	<a th:href="@{/account/primaryAccount}">
+        		<h2>Primary Account Balance:</h2>
+        		<h1><i class="fa fa-usd"></i><span th:text="${primaryAccount.accountBalance}">...</span></h1>
+        	</a>
+        	</div>
+        	
+        	<div class="panel panel-info">
+        		<a th:href="@{/account/savingsAccount}">
+        			<h2>Savings Account Balance:</h2>
+        			<h1><i class="fa fa-usd"></i><span th:text="${savingsAccount.accountBalance}">...</span></h1>
+        		</a>
+        	</div>
+        	
+        	<div class="panel panel-info">
+				<a th:href="@{/account/deposit}">
+        			<h2>Deposit</h2>
+			</div>
+			
+			<div class="panel panel-info">
+				<a th:href="@{/account/withdraw}">
+        			<h2>Withdraw</h2>
+			</div>
+        </div>
+
+    </div>
+</div>
+
+
+<div th:replace="common/header :: body-bottom-scripts"/>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header"/>
+<body roleId="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<head th:replace="common/header :: navbar"/>
+<div class="container main">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Recipient Information</h3>
+            <form th:action="@{/transfer/recipient/save}" method="post">
+                <input type="hidden" name="id" th:value="${recipient.id}" />
+
+                <div class="form-group">
+                    <label for="recipientName">Name</label>
+                    <input type="text" class="form-control" th:value="${recipient.name}" name="name"
+                           id="recipientName" placeholder="Name"/>
+                </div>
+                <div class="form-group">
+                    <label for="recipientEmail">Email</label>
+                    <input type="email" class="form-control" th:value="${recipient.email}" name="email"
+                           id="recipientEmail" placeholder="Email"/>
+                </div>
+                <div class="form-group">
+                    <label for="recipientAccountNumber">Account Number</label>
+                    <input type="text" class="form-control" th:value="${recipient.accountNumber}"
+                           name="accountNumber" id="recipientAccountNumber" placeholder="Account Number"/>
+                </div>
+             
+                <input type="hidden"
+                       name="${_csrf.parameterName}"
+                       value="${_csrf.token}"/>
+
+                <button class="btn btn-primary" type="submit">Add Recipient</button>
+            </form>
+
+            <div class="col-md-6">
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <h3>List of Recipients</h3>
+        <div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Recipient Name</th>
+                    <th>Recipient Email</th>
+                    <th>Recipient Account Number</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-th-each="eachRecipient : ${recipientList}">
+                    <td data-th-text="${eachRecipient.name}">...</td>
+                    <td data-th-text="${eachRecipient.email}">...</td>
+                    <td data-th-text="${eachRecipient.accountNumber}">...</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="common/header :: body-bottom-scripts"/>
+
+</body>
+</html>
